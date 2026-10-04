@@ -1,3 +1,21 @@
 # Purpose: Define the local services used by the Bluesky moderation pipeline.
 # This file should configure the Postgres database and any other supporting services
 # required for ingest, storage, orchestration, and analysis.
+
+# Purpose: Define the local services used by the Bluesky moderation pipeline.
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: haley
+      POSTGRES_PASSWORD: localdev
+      POSTGRES_DB: bluesky
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata:
