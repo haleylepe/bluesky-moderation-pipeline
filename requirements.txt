@@ -1,0 +1,3 @@
+# Purpose: Declare the Python dependencies for the moderation pipeline.
+# Add packages required for Jetstream ingest, PostgreSQL access, scoring logic,
+# dbt integration, and Airflow orchestration.

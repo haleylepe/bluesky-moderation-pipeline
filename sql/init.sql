@@ -1,0 +1,3 @@
+-- Purpose: Initialize the database schema for the moderation pipeline.
+-- This file should create raw tables, staging tables, and any foundational indexes
+-- or constraints required by the downstream transformations.
