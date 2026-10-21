@@ -1,0 +1,12 @@
+version: 2
+models:
+  - name: fct_post_toxicity
+    columns:
+      - name: uri
+        tests: [unique, not_null]
+      - name: toxicity
+        tests: [not_null]
+  - name: daily_toxicity_summary
+    columns:
+      - name: day
+        tests: [unique, not_null]

@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: bluesky
+    schema: public
+    tables:
+      - name: raw_posts
+        loaded_at_field: ingested_at
+        freshness:
+          warn_after: { count: 2, period: hour }
+      - name: post_scores
+      - name: deleted_posts

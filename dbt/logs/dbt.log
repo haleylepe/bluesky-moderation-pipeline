@@ -1,0 +1,99 @@
+[0m08:21:39.887135 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111d39a90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114397750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114397610>]}
+
+
+============================== 08:21:39.890279 | df92f12c-dd10-44d8-975f-2c284e383415 ==============================
+[0m08:21:39.890279 [info ] [MainThread]: Running with dbt=1.13.0-b1
+[0m08:21:39.890607 [debug] [MainThread]: running dbt with arguments {'maximum_seed_size_mib': '1', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'invocation_command': 'dbt init bluesky_dbt', 'write_json': 'True', 'log_cache_events': 'False', 'hints_enabled': 'True', 'no_print': 'None', 'log_path': 'logs', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'partial_parse': 'True', 'introspect': 'True', 'target_path': 'None', 'indirect_selection': 'eager', 'empty': 'None', 'cache_selected_only': 'False', 'static_parser': 'True', 'use_colors': 'True', 'profiles_dir': '/Users/haley3/.dbt', 'printer_width': '80'}
+[0m08:21:39.890789 [debug] [MainThread]: Tracking: tracking
+[0m08:21:39.899344 [info ] [MainThread]: Creating dbt configuration folder at /Users/haley3/.dbt
+[0m08:21:39.900320 [debug] [MainThread]: Starter project path: /Users/haley3/gitworkspace/bluesky-moderation-pipeline/.venv/lib/python3.13/site-packages/dbt/include/starter_project
+[0m08:21:39.905585 [info ] [MainThread]: Setting up your profile.
+[0m08:23:09.279260 [info ] [MainThread]: Profile bluesky_dbt written to /Users/haley3/.dbt/profiles.yml using target's profile_template.yml and your supplied values.
+[0m08:23:09.292389 [info ] [MainThread]: Running dbt debug to validate the project...
+[0m08:23:09.295102 [info ] [MainThread]: dbt version: 1.13.0-b1
+[0m08:23:09.296115 [info ] [MainThread]: python version: 3.13.11
+[0m08:23:09.296933 [info ] [MainThread]: python path: /Users/haley3/gitworkspace/bluesky-moderation-pipeline/.venv/bin/python
+[0m08:23:09.297927 [info ] [MainThread]: os info: macOS-15.0-arm64-arm-64bit-Mach-O
+[0m08:23:09.333555 [info ] [MainThread]: Using profiles dir at /Users/haley3/.dbt
+[0m08:23:09.333840 [info ] [MainThread]: Using profiles.yml file at /Users/haley3/.dbt/profiles.yml
+[0m08:23:09.333988 [info ] [MainThread]: Using dbt_project.yml file at /Users/haley3/gitworkspace/bluesky-moderation-pipeline/dbt/bluesky_dbt/dbt_project.yml
+[0m08:23:09.334580 [info ] [MainThread]: adapter type: postgres
+[0m08:23:09.334774 [info ] [MainThread]: adapter version: 1.11.0
+[0m08:23:09.390348 [info ] [MainThread]: Configuration:
+[0m08:23:09.390658 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m08:23:09.390813 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m08:23:09.390938 [info ] [MainThread]: Required dependencies:
+[0m08:23:09.391173 [debug] [MainThread]: Executing "git --help"
+[0m08:23:09.424198 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m08:23:09.424775 [debug] [MainThread]: STDERR: "b''"
+[0m08:23:09.424956 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m08:23:09.425125 [info ] [MainThread]: Connection:
+[0m08:23:09.425294 [info ] [MainThread]:   host: 5433
+[0m08:23:09.425430 [info ] [MainThread]:   port: 5433
+[0m08:23:09.425551 [info ] [MainThread]:   user: haley
+[0m08:23:09.425669 [info ] [MainThread]:   database: bluesky
+[0m08:23:09.425778 [info ] [MainThread]:   schema: analytics
+[0m08:23:09.425887 [info ] [MainThread]:   connect_timeout: 10
+[0m08:23:09.425992 [info ] [MainThread]:   role: None
+[0m08:23:09.426099 [info ] [MainThread]:   search_path: None
+[0m08:23:09.426204 [info ] [MainThread]:   keepalives_idle: 0
+[0m08:23:09.426311 [info ] [MainThread]:   sslmode: None
+[0m08:23:09.426413 [info ] [MainThread]:   sslcert: None
+[0m08:23:09.426517 [info ] [MainThread]:   sslkey: None
+[0m08:23:09.426619 [info ] [MainThread]:   sslrootcert: None
+[0m08:23:09.426735 [info ] [MainThread]:   application_name: dbt
+[0m08:23:09.426841 [info ] [MainThread]:   autocommit: False
+[0m08:23:09.426943 [info ] [MainThread]:   retries: 1
+[0m08:23:09.427366 [info ] [MainThread]: Registered adapter: postgres=1.11.0
+[0m08:23:09.489432 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m08:23:09.520925 [debug] [MainThread]: Using postgres connection "debug"
+[0m08:23:09.521164 [debug] [MainThread]: On debug: select 1 as id
+[0m08:23:09.521315 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m08:23:09.655637 [debug] [MainThread]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+connection to server at "5433" (0.0.21.57), port 5433 failed: No route to host
+	Is the server running on that host and accepting TCP/IP connections?
+
+[0m08:23:09.658966 [debug] [MainThread]: Postgres adapter: Error running SQL: select 1 as id
+[0m08:23:09.659272 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m08:23:09.659527 [debug] [MainThread]: On debug: No close available on handle
+[0m08:23:09.659785 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m08:23:09.660022 [info ] [MainThread]: [31m1 check failed:[0m
+[0m08:23:09.660224 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  connection to server at "5433" (0.0.21.57), port 5433 failed: No route to host
+  	Is the server running on that host and accepting TCP/IP connections?
+  
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m08:23:09.660553 [info ] [MainThread]: Your new dbt project "bluesky_dbt" was created!
+Initialized new project in /Users/haley3/gitworkspace/bluesky-moderation-pipeline/dbt/bluesky_dbt/bluesky_dbt
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m08:23:09.660810 [info ] [MainThread]: [31mYour profile may need adjustments. You can find the logs of `dbt debug` above[0m
+[0m08:23:09.678165 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 89.844124, "process_in_blocks": "0", "process_kernel_time": 0.281059, "process_mem_max_rss": "120078336", "process_out_blocks": "0", "process_user_time": 0.922724}
+[0m08:23:09.678790 [debug] [MainThread]: Command `dbt init` succeeded at 08:23:09.678656 after 89.84 seconds
+[0m08:23:09.679093 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m08:23:09.679437 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114a2b490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11425e330>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x114c387c0>]}
+[0m08:23:09.679820 [debug] [MainThread]: Flushing usage events
+[0m08:23:10.049490 [debug] [MainThread]: An error was encountered while trying to flush usage events
