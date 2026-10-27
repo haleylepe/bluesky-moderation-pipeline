@@ -3,9 +3,10 @@ import  os
 import psycopg2
 from psycopg2.extras import execute_values
 from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv(usecwd=True))
 
-    
-load_dotenv()
+
 DATABASE_URL = os.getenv('DATABASE_URL')
 JETSTREAM = (
     'wss://jetstream.us-east.bsky.network/xrpc/network.bsky.jetstream.subscribeEvents'

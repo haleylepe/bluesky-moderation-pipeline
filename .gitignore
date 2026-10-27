@@ -1,2 +1,5 @@
 .env
-.venv-1/
+.venv-1/airflow/include/dbt/bluesky_dbt/target/
+airflow/include/dbt/bluesky_dbt/.user.yml
+**/logs/
+**/__pycache__/

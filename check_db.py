@@ -2,6 +2,8 @@ import os
 import psycopg2
 from dotenv import load_dotenv
 
+
+
 load_dotenv()
 EXPECTED = ['deleted_posts', 'ingest_state', 'post_scores', 'raw_posts']
 
@@ -16,7 +18,7 @@ with conn.cursor() as cur:
     assert tables == EXPECTED, f'Tables mismatch: {tables}'
     print('Tables:', tables)
 
-    cur.execute('''INSERT INTO raw_posts (uri, did, text, time_us, raw)
+    cur.execute('''INSERT INTO raw_posts (uri, did, text, seq, raw)
                    VALUES ('test://check', 'did:test', 'hello', 0, '{}')
                    ON CONFLICT (uri) DO NOTHING''')
     cur.execute("SELECT text FROM raw_posts WHERE uri = 'test://check'")
