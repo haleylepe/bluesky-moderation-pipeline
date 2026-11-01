@@ -1,4 +1,4 @@
-import asyncio, json, os, time
+import asyncio, hashlib, json, os, time
 import psycopg2
 import websockets
 from psycopg2.extras import execute_values
@@ -13,6 +13,14 @@ JETSTREAM = (
 )
 RUN_SECONDS = int(os.getenv('RUN_SECONDS', '300'))
 BATCH_SIZE = 500
+SAMPLE_PCT = int(os.getenv('SAMPLE_PCT', '5'))
+
+
+def keep(uri):
+    # Deterministic sample on the post URI: the same post always gets the same answer,
+    # so a later delete event for a sampled post is kept too and the sample stays consistent.
+    h = int(hashlib.md5(uri.encode()).hexdigest()[:8], 16) & 0x7fffffff
+    return h % 100 < SAMPLE_PCT
 
 
 def load_cursor(conn):
@@ -49,6 +57,7 @@ async def run():
     conn = psycopg2.connect(DB_URL)
     last_seq = load_cursor(conn)
     posts, deletes = [], []
+    seen = kept = 0
     end = time.time() + RUN_SECONDS
 
     # Outer loop: if the connection drops, save progress and reconnect until time is up
@@ -67,9 +76,15 @@ async def run():
 
                     uri = f"at://{evt['did']}/{evt['collection']}/{evt['rkey']}"
                     last_seq = evt['seq']
+                    seen += 1
+                    if not keep(uri):
+                        continue
 
                     if evt['operation'] == 'create':
                         rec = evt.get('record', {})
+                        if 'en' not in (rec.get('langs') or []):
+                            continue  # Detoxify only scores English, so only English is stored
+                        kept += 1
                         posts.append((uri, evt['did'], clean(rec.get('text')), rec.get('langs'),
                                       clean(rec.get('createdAt')), evt['time'], evt['seq'],
                                       json.dumps(evt).replace('\\u0000', '')))
@@ -89,6 +104,7 @@ async def run():
 
     flush(conn, posts, deletes, last_seq)
     conn.close()
+    print(f'Saw {seen} events, stored {kept} English posts ({SAMPLE_PCT}% sample), cursor at seq {last_seq}')
 
 
 if __name__ == '__main__':
