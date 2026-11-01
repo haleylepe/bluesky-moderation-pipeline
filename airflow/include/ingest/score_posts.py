@@ -1,22 +1,24 @@
-from detoxify import Detoxify
-import  os
+import os
 import psycopg2
+import torch
+from detoxify import Detoxify
 from psycopg2.extras import execute_values
-from dotenv import load_dotenv
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv(usecwd=True))
 
 
 DATABASE_URL = os.getenv('DATABASE_URL')
-JETSTREAM = (
-    'wss://jetstream.us-east.bsky.network/xrpc/network.bsky.jetstream.subscribeEvents'
-    '?collections=app.bsky.feed.post&kinds=commit'
-)
 MODEL = 'original'
 LABELS = ['toxicity', 'severe_toxicity', 'obscene', 'threat', 'insult', 'identity_attack']
 BATCH = 64
+LIMIT = int(os.getenv('SCORE_LIMIT', '6000'))
+# Detoxify runs inside the Airflow scheduler container locally. Left alone, torch uses
+# every core and the scheduler misses its heartbeats, so Airflow kills the task.
+THREADS = int(os.getenv('SCORE_THREADS', '4'))
+
 
 def get_unscored_posts(conn):
+    # Newest first, so the dashboard's recent days fill in before the older backlog
     with conn.cursor() as cur:
         cur.execute('''
             SELECT r.uri, r.text
@@ -27,19 +29,15 @@ def get_unscored_posts(conn):
             AND d.uri IS NULL
             AND r.text IS NOT NULL AND r.text <> ''
             AND 'en' = ANY(r.langs)
-            LIMIT 5000
-        ''')
+            ORDER BY r.event_time DESC
+            LIMIT %s
+        ''', (LIMIT,))
         rows = cur.fetchall()
     return rows
 
-def get_text(unformatted_posts):
-    texts = []
-    for post in unformatted_posts:
-        texts.append(post[1])
-    return texts
-
 
 def main():
+    torch.set_num_threads(THREADS)
     conn = psycopg2.connect(DATABASE_URL)
     rows = get_unscored_posts(conn)
     if not rows:
@@ -65,7 +63,7 @@ def main():
 
     print(f'Scored {len(rows)} posts')
     conn.close()
-    
+
 
 if __name__ == '__main__':
     main()
