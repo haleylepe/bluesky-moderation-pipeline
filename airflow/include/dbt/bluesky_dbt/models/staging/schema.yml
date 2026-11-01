@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_posts
+    description: Ingested English posts, minus any the author has deleted.
+    columns:
+      - name: uri
+        description: Post ID (at:// URI).
+        data_tests: [unique, not_null]
+      - name: author_id
+        description: Author DID.
+        data_tests: [not_null]
+      - name: seen_at
+        description: When Jetstream saw the post.
+        data_tests: [not_null]
+      - name: created_at
+        description: Client-reported creation time. Null when the client sent an unparseable value.

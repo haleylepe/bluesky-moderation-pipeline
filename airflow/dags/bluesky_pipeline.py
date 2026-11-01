@@ -51,7 +51,7 @@ def bluesky_pipeline():
     )
     dbt_run = BashOperator(
         task_id='dbt_run',
-        bash_command=f'cd {DBT_DIR} && {DBT} run --profiles-dir .',
+        bash_command=f'cd {DBT_DIR} && {DBT} deps --profiles-dir . && {DBT} run --profiles-dir .',
         env=DB_ENV,
         append_env=True,
     )

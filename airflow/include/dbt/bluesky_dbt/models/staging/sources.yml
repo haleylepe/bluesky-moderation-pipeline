@@ -1,4 +1,5 @@
 version: 2
+
 sources:
   - name: bluesky
     schema: public
@@ -7,5 +8,30 @@ sources:
         loaded_at_field: ingested_at
         freshness:
           warn_after: { count: 2, period: hour }
+        columns:
+          - name: uri
+            data_tests: [unique, not_null]
+          - name: event_time
+            data_tests: [not_null]
+
       - name: post_scores
+        columns:
+          - name: uri
+            data_tests:
+              - unique
+              - not_null
+              # Every score should belong to a post we ingested. Warn rather than fail,
+              # so a handful of orphans doesn't block the dashboard refresh.
+              - relationships:
+                  arguments:
+                    to: source('bluesky', 'raw_posts')
+                    field: uri
+                  config:
+                    severity: warn
+          - name: scored_at
+            data_tests: [not_null]
+
       - name: deleted_posts
+        columns:
+          - name: uri
+            data_tests: [unique, not_null]

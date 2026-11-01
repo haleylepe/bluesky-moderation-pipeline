@@ -1,12 +1,113 @@
 version: 2
+
+# Detoxify outputs sigmoid probabilities, so every score and share must fall in [0, 1].
+
 models:
   - name: fct_post_toxicity
+    description: One row per scored, non-deleted post with its Detoxify scores.
     columns:
       - name: uri
-        tests: [unique, not_null]
+        description: Post ID (at:// URI).
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_posts')
+                field: uri
+      - name: author_id
+        data_tests: [not_null]
+      - name: seen_at
+        data_tests: [not_null]
       - name: toxicity
-        tests: [not_null]
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: severe_toxicity
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: obscene
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: threat
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: insult
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: identity_attack
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: is_toxic
+        description: toxicity >= 0.5
+        data_tests: [not_null]
+
   - name: daily_toxicity_summary
+    description: Daily volume and share of posts over the 0.5 threshold, by category.
     columns:
       - name: day
-        tests: [unique, not_null]
+        data_tests: [unique, not_null]
+      - name: posts_scored
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 1
+      - name: avg_toxicity
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: share_toxic
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: share_insult
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: share_threat
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
+      - name: share_identity_attack
+        data_tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 1
