@@ -6,11 +6,24 @@ INCLUDE = '/usr/local/airflow/include'
 DBT_DIR = f'{INCLUDE}/dbt/bluesky_dbt'
 DBT = '/usr/local/airflow/dbt_venv/bin/dbt'
 
+# Postgres credentials come from the Airflow connection `bluesky_postgres`
+# (set as AIRFLOW_CONN_BLUESKY_POSTGRES in airflow/.env, see airflow/.env.example).
+# The templates render at run time, so nothing secret lives in this file.
+PG = 'conn.bluesky_postgres'
 DB_ENV = {
-    'DATABASE_URL': 'postgresql://haley:localdev@host.docker.internal:5433/bluesky',
-    'DB_HOST': 'host.docker.internal',
+    'DATABASE_URL': (
+        f'postgresql://{{{{ {PG}.login }}}}:{{{{ {PG}.password | urlencode }}}}'
+        f'@{{{{ {PG}.host }}}}:{{{{ {PG}.port }}}}/{{{{ {PG}.schema }}}}'
+    ),
+    'DB_HOST': f'{{{{ {PG}.host }}}}',
+    'DB_PORT': f'{{{{ {PG}.port }}}}',
+    'DB_USER': f'{{{{ {PG}.login }}}}',
+    'DB_NAME': f'{{{{ {PG}.schema }}}}',
+    'POSTGRES_PASSWORD': f'{{{{ {PG}.password }}}}',
     'RUN_SECONDS': '300',
+    'SAMPLE_PCT': '5',
 }
+
 
 @dag(
     schedule='@hourly',
@@ -26,21 +39,29 @@ def bluesky_pipeline():
         bash_command=f'python {INCLUDE}/ingest/extract_jetstream.py',
         env=DB_ENV,
         append_env=True,
+        execution_timeout=timedelta(minutes=15),
     )
+    # nice keeps the scheduler responsive while Detoxify is using the CPU
     score = BashOperator(
         task_id='score_posts',
-        bash_command=f'python {INCLUDE}/ingest/score_posts.py',
+        bash_command=f'nice -n 10 python {INCLUDE}/ingest/score_posts.py',
+        env=DB_ENV,
+        append_env=True,
+        execution_timeout=timedelta(minutes=45),
+    )
+    dbt_run = BashOperator(
+        task_id='dbt_run',
+        bash_command=f'cd {DBT_DIR} && {DBT} run --profiles-dir .',
         env=DB_ENV,
         append_env=True,
     )
-    transform = BashOperator(
-        task_id='dbt_build',
-        bash_command=f'cd {DBT_DIR} && {DBT} build --profiles-dir .',
+    dbt_test = BashOperator(
+        task_id='dbt_test',
+        bash_command=f'cd {DBT_DIR} && {DBT} test --profiles-dir .',
         env=DB_ENV,
         append_env=True,
     )
-    extract >> score >> transform
-    
+    extract >> score >> dbt_run >> dbt_test
 
 
 bluesky_pipeline()
