@@ -15,5 +15,20 @@ services:
       - pgdata:/var/lib/postgresql/data
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
 
+  # Metabase keeps its own settings, questions, and dashboards in an H2 file on the
+  # metabase-data volume, so they survive container rebuilds. It reads the pipeline's
+  # data from the postgres service (host "postgres", port 5432), set up once in the UI.
+  metabase:
+    image: metabase/metabase:latest
+    environment:
+      MB_DB_FILE: /metabase-data/metabase.db
+    ports:
+      - "3000:3000"
+    volumes:
+      - metabase-data:/metabase-data
+    depends_on:
+      - postgres
+
 volumes:
   pgdata:
+  metabase-data:
