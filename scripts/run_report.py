@@ -23,6 +23,8 @@ AIRFLOW_PASSWORD = os.getenv('AIRFLOW_PASSWORD', 'admin')
 DAG_ID = 'bluesky_pipeline'
 DATABASE_URL = os.getenv('DATABASE_URL')
 OUT_DIR = Path('reports')
+# Runs before 2026-11-01 had a single dbt_build task; later runs split it into dbt_run and dbt_test
+TASKS = ('extract_jetstream', 'score_posts', 'dbt_run', 'dbt_test', 'dbt_build')
 
 
 def airflow_token():
@@ -58,7 +60,7 @@ def fetch_runs(session):
             'run_type': run['run_type'],
             'duration_s': duration_s(run.get('start_date'), run.get('end_date')),
         }
-        for task_id in ('extract_jetstream', 'score_posts', 'dbt_build'):
+        for task_id in TASKS:
             t = by_task.get(task_id, {})
             row[f'{task_id}_state'] = t.get('state')
             row[f'{task_id}_s'] = duration_s(t.get('start_date'), t.get('end_date'))
@@ -110,11 +112,14 @@ def main():
     failed = [r for r in runs if r['state'] == 'failed']
     print(f'\n{DAG_ID}: {len(runs)} runs, {len(ok)} succeeded, {len(failed)} failed')
     if ok:
-        avg = lambda key: round(sum(r[key] for r in ok if r[key]) / len(ok), 1)
+        def avg(*keys):
+            # Average only over runs that had the task, and add up split tasks (dbt_run + dbt_test)
+            vals = [sum(r[k] or 0 for k in keys) for r in ok if any(r[k] is not None for k in keys)]
+            return round(sum(vals) / len(vals), 1) if vals else None
         print(f"  avg run {avg('duration_s')}s  "
-              f"(extract {avg('extract_jetstream_s')}s, score {avg('score_posts_s')}s, dbt {avg('dbt_build_s')}s)")
+              f"(extract {avg('extract_jetstream_s')}s, score {avg('score_posts_s')}s, dbt {avg('dbt_run_s', 'dbt_test_s', 'dbt_build_s')}s)")
     for r in failed:
-        bad = [t for t in ('extract_jetstream', 'score_posts', 'dbt_build') if r[f'{t}_state'] == 'failed']
+        bad = [t for t in TASKS if r[f'{t}_state'] == 'failed']
         print(f"  FAILED {r['logical_date_utc']}: {', '.join(bad) or 'unknown task'}")
 
     stats = fetch_data_stats()
