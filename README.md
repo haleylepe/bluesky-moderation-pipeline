@@ -98,6 +98,19 @@ This project builds the measurement side of that problem on live data: a pipelin
 
 To see how runs are going, `python scripts/run_report.py` prints a summary of recent DAG runs and row counts and writes CSVs to `reports/`.
 
+## Dashboard
+
+A static dashboard in [dashboard/](dashboard/) presents the results with Bluesky's colors and Inter type: an overview of flag rates by category, a review feed of the highest-scoring posts (scores only, hashed IDs), and pipeline health from the Airflow run history. It reads one file, `dashboard/data/dashboard.json`, so it can be hosted on Vercel without any connection to the database.
+
+To refresh it, with Postgres (and, for run history, Airflow) running:
+
+```bash
+python scripts/run_report.py              # refreshes reports/dag_runs.csv
+python scripts/export_dashboard_data.py   # writes dashboard/data/dashboard.json
+```
+
+Then commit the JSON and redeploy. Without Postgres, the export falls back to the last run report, and the score distribution and review feed stay empty until the next full export.
+
 ## Data model
 
 The raw layer is written by the Python tasks. dbt builds everything downstream of it in the `analytics` schema.
@@ -179,6 +192,8 @@ These are posts from real people, so the project follows a few rules:
 ├── metabase/
 │   ├── README.md               # Connecting Metabase and building the dashboard
 │   └── queries/                # SQL for the four dashboard questions
+├── dashboard/                  # Static dashboard for Vercel (index.html, app.js, data/dashboard.json)
+├── scripts/export_dashboard_data.py  # Writes the dashboard's JSON from the analytics schema
 └── airflow/                    # Astro project
     ├── Dockerfile              # Astro Runtime plus a separate dbt virtualenv
     ├── requirements.txt        # Python packages for the Airflow image
@@ -193,6 +208,7 @@ These are posts from real people, so the project follows a few rules:
 
 ## Next steps
 
+- **To do: account-level view.** Switch the extract to sample by author DID instead of post URI (so every post from a sampled account is kept), add a `fct_author_toxicity` dbt table with one row per account (posts scored, flagged posts, flag rate, max score, first and last seen, keyed on `author_id` as text), and add a Users tab to the dashboard that shows hashed account IDs only.
 - Compare Detoxify scores with Bluesky's own moderation labels.
 - Hand-label a sample of high-scoring posts to estimate precision at the 0.5 threshold.
 - Add source freshness checks to the DAG so a stalled extract fails loudly.

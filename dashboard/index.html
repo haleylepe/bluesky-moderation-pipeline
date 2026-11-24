@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bluesky Moderation Analytics</title>
+<meta name="description" content="Detoxify toxicity scores on a live sample of public Bluesky posts, built with Airflow, dbt and Postgres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<aside class="rail" aria-label="Sections">
+  <div class="mark" aria-hidden="true"></div>
+  <nav>
+    <button class="rail-btn active" data-tab="overview" title="Overview" aria-label="Overview">
+      <svg viewBox="0 0 24 24"><path d="M4 19V10M10 19V5M16 19v-7M22 19H2"/></svg></button>
+    <button class="rail-btn" data-tab="review" title="Review feed" aria-label="Review feed">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg></button>
+    <button class="rail-btn" data-tab="health" title="Pipeline health" aria-label="Pipeline health">
+      <svg viewBox="0 0 24 24"><path d="M2 12h4l3-7 4 14 3-7h6"/></svg></button>
+    <button class="rail-btn" data-tab="users" title="Users (to do)" aria-label="Users">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></button>
+  </nav>
+</aside>
+
+<div class="page">
+  <header class="topbar">
+    <div class="brand"><span class="brand-dot"></span>Moderation Analytics</div>
+    <a class="pill-link" href="https://github.com/haleylepe/bluesky-moderation-pipeline" target="_blank" rel="noopener">View on GitHub</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="kicker">Bluesky moderation pipeline</p>
+      <h1>What does an off-the-shelf toxicity model actually flag?</h1>
+      <p class="lede">Detoxify scores on a 5% sample of public English Bluesky posts, collected hourly by Airflow and modeled in dbt. <span id="updated"></span></p>
+    </section>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" role="tab" data-tab="overview">Overview</button>
+      <button class="tab" role="tab" data-tab="review">Review feed</button>
+      <button class="tab" role="tab" data-tab="health">Pipeline health</button>
+      <button class="tab" role="tab" data-tab="users">Users <span class="todo">To do</span></button>
+    </div>
+
+    <div class="filters" id="filters">
+      <div class="seg" role="group" aria-label="Date range">
+        <button class="seg-btn active" data-range="all">All time</button>
+        <button class="seg-btn" data-range="7">Last 7 days</button>
+      </div>
+      <label class="select">Aggregate by
+        <select id="agg"><option value="day">Day</option><option value="week">Week</option></select>
+      </label>
+      <span class="note" id="range-note"></span>
+    </div>
+
+    <!-- Overview -->
+    <section class="panel active" id="tab-overview">
+      <div class="kpis" id="kpis"></div>
+      <div class="grid">
+        <article class="card wide">
+          <header><h2>Flag rate by category</h2><p>Share of scored posts at or above 0.5 in each Detoxify category. Click a legend item to hide it.</p></header>
+          <div class="chart tall"><canvas id="c-rate"></canvas></div>
+        </article>
+        <article class="card">
+          <header><h2>Posts scored</h2><p>Reflects collection, not Bluesky's posting volume: the first day was the full firehose, later days a 5% sample.</p></header>
+          <div class="chart"><canvas id="c-volume"></canvas></div>
+        </article>
+        <article class="card">
+          <header><h2>Average toxicity score</h2><p>Mean Detoxify toxicity across scored posts, 0 to 1.</p></header>
+          <div class="chart"><canvas id="c-avg"></canvas></div>
+        </article>
+        <article class="card">
+          <header><h2>Which categories fire</h2><p>Share of all scored posts flagged in each category, whole period.</p></header>
+          <div class="chart"><canvas id="c-cats"></canvas></div>
+        </article>
+        <article class="card">
+          <header><h2>Score distribution</h2><p>Posts per 0.05-wide toxicity bucket.</p></header>
+          <div class="chart" id="dist-wrap"><canvas id="c-dist"></canvas></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Review feed -->
+    <section class="panel" id="tab-review">
+      <article class="card">
+        <header class="row-head"><div><h2>Highest-scoring posts</h2><p>Scores only. Post text and accounts are never shown; IDs are one-way hashes.</p></div>
+          <label class="select">Sort by
+            <select id="sort"><option value="toxicity">Toxicity</option><option value="threat">Threat</option><option value="identity_attack">Identity attack</option><option value="insult">Insult</option></select>
+          </label></header>
+        <div id="review"></div>
+      </article>
+    </section>
+
+    <!-- Pipeline health -->
+    <section class="panel" id="tab-health">
+      <div class="kpis" id="health-kpis"></div>
+      <div class="grid">
+        <article class="card wide">
+          <header><h2>Hourly runs by outcome</h2><p>Each bar is a day of scheduled runs of the bluesky_pipeline DAG.</p></header>
+          <div class="chart"><canvas id="c-runs"></canvas></div>
+        </article>
+        <article class="card">
+          <header><h2>Where failed runs stopped</h2><p>The first task that failed in each failed run.</p></header>
+          <div class="chart"><canvas id="c-fail"></canvas></div>
+        </article>
+        <article class="card">
+          <header><h2>Typical task time</h2><p>Median minutes per task in successful runs.</p></header>
+          <div class="chart"><canvas id="c-dur"></canvas></div>
+        </article>
+        <article class="card wide">
+          <header><h2>Recent runs</h2></header>
+          <div id="runs-table"></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Users (to do) -->
+    <section class="panel" id="tab-users">
+      <article class="card todo-card">
+        <p class="kicker">Coming next</p>
+        <h2>Account-level view</h2>
+        <p>Moderation teams act on accounts as well as posts. The next version adds a Users view: accounts ranked by flag rate, and a history page for each one.</p>
+        <ol>
+          <li>Sample by account instead of by post in <code>airflow/include/ingest/extract_jetstream.py</code>, so every post from a sampled account is kept.</li>
+          <li>Add a dbt table <code>fct_author_toxicity</code>: one row per account with posts scored, flagged posts, flag rate, max score and first/last seen.</li>
+          <li>Export hashed account IDs only, so the dashboard never shows a handle or DID.</li>
+        </ol>
+      </article>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Built by Haley Lepe with Bluesky Jetstream, Postgres, Detoxify, dbt and Airflow.</span>
+    <span id="source"></span>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

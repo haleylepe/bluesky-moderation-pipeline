@@ -1,0 +1,2422 @@
+{
+ "generated_at": "2026-11-24T22:40:07+00:00",
+ "source": "reports/daily_toxicity_summary.csv",
+ "threshold": 0.5,
+ "summary": {
+  "posts_scored": 574207,
+  "first_day": "2026-10-21",
+  "last_day": "2026-10-31",
+  "days": 11,
+  "avg_toxicity": 0.10324236835358207,
+  "share_toxic": 0.09229250078804334,
+  "share_insult": 0.02361517710512063,
+  "share_threat": 0.0013009245794635036,
+  "share_identity_attack": 0.002995435444012351
+ },
+ "daily": [
+  {
+   "day": "2026-10-21",
+   "posts_scored": 255048,
+   "avg_toxicity": 0.10362565269414363,
+   "share_toxic": 0.09239437282393902,
+   "share_insult": 0.02317995044070136,
+   "share_threat": 0.0012625074495781186,
+   "share_identity_attack": 0.0029523854333301965
+  },
+  {
+   "day": "2026-10-22",
+   "posts_scored": 17985,
+   "avg_toxicity": 0.10580497721199053,
+   "share_toxic": 0.09441201000834028,
+   "share_insult": 0.025688073394495414,
+   "share_threat": 0.002001668056713928,
+   "share_identity_attack": 0.0030581039755351682
+  },
+  {
+   "day": "2026-10-23",
+   "posts_scored": 20787,
+   "avg_toxicity": 0.10727194582119179,
+   "share_toxic": 0.09631019387116949,
+   "share_insult": 0.02525616972146053,
+   "share_threat": 0.0016837446480973686,
+   "share_identity_attack": 0.003319382306249098
+  },
+  {
+   "day": "2026-10-24",
+   "posts_scored": 17664,
+   "avg_toxicity": 0.09443326161392732,
+   "share_toxic": 0.08508831521739131,
+   "share_insult": 0.021229619565217392,
+   "share_threat": 0.0009624094202898551,
+   "share_identity_attack": 0.0030004528985507245
+  },
+  {
+   "day": "2026-10-25",
+   "posts_scored": 16576,
+   "avg_toxicity": 0.10772391469179772,
+   "share_toxic": 0.09736969111969113,
+   "share_insult": 0.024493243243243243,
+   "share_threat": 0.0014478764478764478,
+   "share_identity_attack": 0.003559362934362934
+  },
+  {
+   "day": "2026-10-26",
+   "posts_scored": 31961,
+   "avg_toxicity": 0.10177268227277836,
+   "share_toxic": 0.0910797534495166,
+   "share_insult": 0.023278370514064017,
+   "share_threat": 0.001126372766809549,
+   "share_identity_attack": 0.003347830168017271
+  },
+  {
+   "day": "2026-10-27",
+   "posts_scored": 8484,
+   "avg_toxicity": 0.10295036252649946,
+   "share_toxic": 0.09276284771334277,
+   "share_insult": 0.02593116454502593,
+   "share_threat": 0.0015322960867515322,
+   "share_identity_attack": 0.002710985384252711
+  },
+  {
+   "day": "2026-10-28",
+   "posts_scored": 92953,
+   "avg_toxicity": 0.10482659201584689,
+   "share_toxic": 0.09359568814347036,
+   "share_insult": 0.02539993329962454,
+   "share_threat": 0.0012371843835056427,
+   "share_identity_attack": 0.0032381956472625952
+  },
+  {
+   "day": "2026-10-29",
+   "posts_scored": 59481,
+   "avg_toxicity": 0.10438908439741164,
+   "share_toxic": 0.09465207377145643,
+   "share_insult": 0.023351994754627528,
+   "share_threat": 0.0012609068442023504,
+   "share_identity_attack": 0.0029253038785494526
+  },
+  {
+   "day": "2026-10-30",
+   "posts_scored": 34268,
+   "avg_toxicity": 0.09519010806954768,
+   "share_toxic": 0.08386833197151862,
+   "share_insult": 0.02144858176724641,
+   "share_threat": 0.0011964514999416366,
+   "share_identity_attack": 0.0024804482315863197
+  },
+  {
+   "day": "2026-10-31",
+   "posts_scored": 19000,
+   "avg_toxicity": 0.10132812668595426,
+   "share_toxic": 0.09005263157894737,
+   "share_insult": 0.02268421052631579,
+   "share_threat": 0.001736842105263158,
+   "share_identity_attack": 0.002157894736842105
+  }
+ ],
+ "flagged_by_category": null,
+ "distribution": null,
+ "top_posts": null,
+ "runs": [
+  {
+   "logical_date": "2026-10-25T03:00:00Z",
+   "state": "success",
+   "duration_s": 5879.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 301.1
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1020.0
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 16.6
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-25T05:00:00Z",
+   "state": "success",
+   "duration_s": 1280.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 309.5
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 957.9
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 11.1
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-25T06:00:00Z",
+   "state": "success",
+   "duration_s": 1349.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 595.9
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 731.0
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 21.2
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-25T07:00:00Z",
+   "state": "success",
+   "duration_s": 1255.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 309.3
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 908.7
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 33.7
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-25T08:00:00Z",
+   "state": "success",
+   "duration_s": 929.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 302.6
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 585.2
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 36.3
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-25T09:00:00Z",
+   "state": "failed",
+   "duration_s": 15450.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 303.1
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 2646.7
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-25T13:00:00Z",
+   "state": "failed",
+   "duration_s": 16678.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 610.1
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 2513.5
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-25T17:00:00Z",
+   "state": "failed",
+   "duration_s": 10793.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 1260.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-25T20:00:00Z",
+   "state": "failed",
+   "duration_s": 13044.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 309.9
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 636.7
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T00:00:00Z",
+   "state": "failed",
+   "duration_s": 6216.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 381.3
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 874.8
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T02:00:00Z",
+   "state": "failed",
+   "duration_s": 5543.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 363.5
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 1190.2
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T03:00:00Z",
+   "state": "success",
+   "duration_s": 6727.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.8
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 591.8
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 22.0
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T05:00:00Z",
+   "state": "success",
+   "duration_s": 2371.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 309.9
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1622.5
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 41.8
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T06:00:00Z",
+   "state": "success",
+   "duration_s": 1552.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.0
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1211.4
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 28.5
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T07:00:00Z",
+   "state": "success",
+   "duration_s": 782.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 301.0
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 461.1
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 17.2
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T08:00:00Z",
+   "state": "failed",
+   "duration_s": 16503.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 313.6
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 3710.2
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T12:00:00Z",
+   "state": "failed",
+   "duration_s": 12539.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 965.5
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T16:00:00Z",
+   "state": "failed",
+   "duration_s": 8722.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 712.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T18:00:00Z",
+   "state": "success",
+   "duration_s": 1002.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.4
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 664.7
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 21.2
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T19:00:00Z",
+   "state": "failed",
+   "duration_s": 4591.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 1.0
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T20:00:00Z",
+   "state": "failed",
+   "duration_s": 7386.8,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T22:00:00Z",
+   "state": "failed",
+   "duration_s": 3857.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-26T23:00:00Z",
+   "state": "failed",
+   "duration_s": 8850.8,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.5
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T01:00:00Z",
+   "state": "failed",
+   "duration_s": 3407.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.4
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T02:00:00Z",
+   "state": "success",
+   "duration_s": 1086.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 310.8
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 446.2
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 25.9
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T03:00:00Z",
+   "state": "success",
+   "duration_s": 2394.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 310.8
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 535.9
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 51.0
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T04:00:00Z",
+   "state": "success",
+   "duration_s": 847.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 304.8
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 513.5
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 28.0
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T05:00:00Z",
+   "state": "success",
+   "duration_s": 2502.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 300.9
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 354.2
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 27.7
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T06:00:00Z",
+   "state": "success",
+   "duration_s": 675.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 301.4
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 348.3
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 23.1
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T07:00:00Z",
+   "state": "success",
+   "duration_s": 3634.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 303.6
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 432.8
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 22.0
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T08:00:00Z",
+   "state": "success",
+   "duration_s": 1292.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 852.6
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 414.1
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 23.5
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T09:00:00Z",
+   "state": "failed",
+   "duration_s": 7919.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 10.8
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T11:00:00Z",
+   "state": "failed",
+   "duration_s": 5916.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T12:00:00Z",
+   "state": "failed",
+   "duration_s": 935.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T13:00:00Z",
+   "state": "failed",
+   "duration_s": 3156.0,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T14:00:00Z",
+   "state": "failed",
+   "duration_s": 4206.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.4
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T15:00:00Z",
+   "state": "failed",
+   "duration_s": 786.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.5
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T16:00:00Z",
+   "state": "failed",
+   "duration_s": 735.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.4
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T17:00:00Z",
+   "state": "success",
+   "duration_s": 1512.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 310.8
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 557.5
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 38.7
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T18:00:00Z",
+   "state": "failed",
+   "duration_s": 7810.0,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.6
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T20:00:00Z",
+   "state": "failed",
+   "duration_s": 7282.6,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.6
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T22:00:00Z",
+   "state": "failed",
+   "duration_s": 1768.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 10.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-27T23:00:00Z",
+   "state": "success",
+   "duration_s": 1640.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 619.0
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 673.9
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 34.3
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T00:00:00Z",
+   "state": "success",
+   "duration_s": 564.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 0.8
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 522.9
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 38.4
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T01:00:00Z",
+   "state": "success",
+   "duration_s": 845.8,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 4.9
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 822.9
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 15.6
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T02:00:00Z",
+   "state": "success",
+   "duration_s": 479.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 0.5
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 469.6
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 7.3
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T03:00:00Z",
+   "state": "success",
+   "duration_s": 582.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 0.4
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 572.2
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 7.3
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T03:15:26Z",
+   "state": "success",
+   "duration_s": 935.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 301.7
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 621.2
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 10.6
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T03:45:54Z",
+   "state": "failed",
+   "duration_s": 9309.6,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 300.5
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 3210.9
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T06:00:00Z",
+   "state": "failed",
+   "duration_s": 11189.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 3486.3
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T09:00:00Z",
+   "state": "failed",
+   "duration_s": 12749.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 56.6
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T13:00:00Z",
+   "state": "failed",
+   "duration_s": 7373.8,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.3
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T15:00:00Z",
+   "state": "failed",
+   "duration_s": 6199.0,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T16:00:00Z",
+   "state": "failed",
+   "duration_s": 7131.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 318.2
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 1391.4
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T18:00:00Z",
+   "state": "failed",
+   "duration_s": 4221.6,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 55.2
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T19:00:00Z",
+   "state": "failed",
+   "duration_s": 6215.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 824.2
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T21:00:00Z",
+   "state": "success",
+   "duration_s": 3000.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 563.5
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1734.1
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 13.2
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T22:00:00Z",
+   "state": "success",
+   "duration_s": 1488.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.1
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 754.4
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 7.9
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-28T23:00:00Z",
+   "state": "success",
+   "duration_s": 1484.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 315.0
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1147.7
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 19.4
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T00:00:00Z",
+   "state": "success",
+   "duration_s": 1900.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.6
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1565.2
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 20.3
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T01:00:00Z",
+   "state": "success",
+   "duration_s": 1547.8,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.2
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1224.3
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 10.3
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T02:00:00Z",
+   "state": "success",
+   "duration_s": 1122.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 310.7
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 800.6
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 9.2
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T03:00:00Z",
+   "state": "success",
+   "duration_s": 1354.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 312.0
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1006.9
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 32.6
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T04:00:00Z",
+   "state": "success",
+   "duration_s": 1529.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 308.6
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1201.3
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 16.6
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T05:00:00Z",
+   "state": "failed",
+   "duration_s": 1658.8,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 735.0
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T06:00:00Z",
+   "state": "success",
+   "duration_s": 4586.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 334.9
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 3316.1
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 8.3
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T07:00:00Z",
+   "state": "failed",
+   "duration_s": 5500.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 427.8
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 658.3
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T08:00:00Z",
+   "state": "failed",
+   "duration_s": 6203.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 568.3
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 1153.1
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T10:00:00Z",
+   "state": "failed",
+   "duration_s": 15347.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 317.1
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 684.7
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T14:00:00Z",
+   "state": "failed",
+   "duration_s": 11842.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 461.3
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 2488.6
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T18:00:00Z",
+   "state": "failed",
+   "duration_s": 15606.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 487.3
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 673.1
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-29T22:00:00Z",
+   "state": "failed",
+   "duration_s": 7467.0,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 667.8
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T00:00:00Z",
+   "state": "failed",
+   "duration_s": 9551.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 355.8
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 756.5
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T03:00:00Z",
+   "state": "success",
+   "duration_s": 1418.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 305.6
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1100.5
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 10.6
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T04:00:00Z",
+   "state": "failed",
+   "duration_s": 8200.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 315.3
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 1530.6
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T06:00:00Z",
+   "state": "failed",
+   "duration_s": 9068.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 1046.9
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T08:00:00Z",
+   "state": "failed",
+   "duration_s": 5677.7,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 643.6
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T10:00:00Z",
+   "state": "success",
+   "duration_s": 2858.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 310.7
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1269.2
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 13.5
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T11:00:00Z",
+   "state": "success",
+   "duration_s": 1612.6,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 317.9
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1280.4
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 11.9
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T12:00:00Z",
+   "state": "failed",
+   "duration_s": 13759.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 304.2
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 2097.5
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T15:00:00Z",
+   "state": "failed",
+   "duration_s": 7681.6,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 414.3
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 1630.4
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T17:00:00Z",
+   "state": "success",
+   "duration_s": 4008.0,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 310.8
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1061.0
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 19.1
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T19:00:00Z",
+   "state": "success",
+   "duration_s": 1384.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.0
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1047.9
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 20.5
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T20:00:00Z",
+   "state": "failed",
+   "duration_s": 8778.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 323.7
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 1296.7
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-30T22:00:00Z",
+   "state": "failed",
+   "duration_s": 7375.5,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 504.8
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 1739.6
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T00:00:00Z",
+   "state": "success",
+   "duration_s": 8213.6,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 305.6
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1602.1
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 10.7
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T02:00:00Z",
+   "state": "failed",
+   "duration_s": 8319.0,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 310.6
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 657.2
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T05:00:00Z",
+   "state": "failed",
+   "duration_s": 11222.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 475.2
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 1052.5
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T08:00:00Z",
+   "state": "failed",
+   "duration_s": 21854.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 12309.5
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T14:00:00Z",
+   "state": "success",
+   "duration_s": 2521.9,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.1
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 756.8
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 8.6
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T15:00:00Z",
+   "state": "success",
+   "duration_s": 1276.6,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 310.6
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 951.5
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 12.1
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T16:00:00Z",
+   "state": "success",
+   "duration_s": 1244.3,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.1
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 920.8
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 10.2
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T17:00:00Z",
+   "state": "failed",
+   "duration_s": 13227.8,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.1
+    },
+    "score_posts": {
+     "state": "failed",
+     "s": 4232.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T20:00:00Z",
+   "state": "failed",
+   "duration_s": 7316.1,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.6
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-10-31T22:00:00Z",
+   "state": "failed",
+   "duration_s": 6334.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.5
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-11-01T00:00:00Z",
+   "state": "failed",
+   "duration_s": 6002.0,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.5
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-11-01T02:00:00Z",
+   "state": "failed",
+   "duration_s": 1642.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "failed",
+     "s": 0.7
+    },
+    "score_posts": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_run": {
+     "state": "upstream_failed",
+     "s": 0.0
+    },
+    "dbt_test": {
+     "state": "upstream_failed",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-11-01T03:00:00Z",
+   "state": "success",
+   "duration_s": 1430.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 311.1
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 1104.9
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 11.2
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": null
+    }
+   }
+  },
+  {
+   "logical_date": "2026-11-01T04:00:00Z",
+   "state": "success",
+   "duration_s": 1609.2,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 312.4
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 667.3
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 12.9
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": 5.2
+    }
+   }
+  },
+  {
+   "logical_date": "2026-11-01T05:00:00Z",
+   "state": "success",
+   "duration_s": 1145.4,
+   "tasks": {
+    "extract_jetstream": {
+     "state": "success",
+     "s": 368.8
+    },
+    "score_posts": {
+     "state": "success",
+     "s": 751.6
+    },
+    "dbt_run": {
+     "state": "success",
+     "s": 10.8
+    },
+    "dbt_test": {
+     "state": "success",
+     "s": 10.3
+    }
+   }
+  }
+ ]
+}
