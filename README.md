@@ -2,8 +2,7 @@
 
 An end-to-end data pipeline that samples public Bluesky posts from the Jetstream firehose, scores them with the Detoxify toxicity classifier, and models the results in dbt for a Metabase dashboard. Airflow runs the whole thing every hour. The point is to measure how well an off-the-shelf toxicity model covers the harms a trust and safety team actually handles, and to show where it falls short.
 
-![Airflow graph view of the bluesky_pipeline DAG](docs/images/airflow-graph.png)
-<!-- Screenshot placeholder: Airflow > bluesky_pipeline > Graph, after a green run. Save as docs/images/airflow-graph.png -->
+<!-- Optional: add an Airflow graph screenshot as docs/images/airflow-graph.png and embed it here. -->
 
 ## Architecture
 
@@ -125,26 +124,29 @@ Staging is where raw data gets cleaned and deletions are honored. It is a view, 
 
 ## Findings
 
-<!-- Fill in from the Metabase dashboard once the pipeline has collected several days of data. -->
+Results below come from the pipeline's own outputs (`reports/daily_toxicity_summary.csv` and `reports/dag_runs.csv`, written by `scripts/run_report.py`).
 
-![Metabase dashboard](docs/images/metabase-dashboard.png)
-<!-- Screenshot placeholder: the Metabase dashboard with all four questions. Save as docs/images/metabase-dashboard.png -->
+![Share of scored posts flagged each day](docs/images/daily-flag-rate.png)
 
-**Dataset.** _[Date range, number of posts scored, sample rate. Note that early days were captured from the full firehose and later days from a 5% sample.]_
+**Dataset.** 574,207 English posts scored between October 21 and October 31, 2026. October 21 (255,048 posts) was captured from the full firehose while the extract was being built; every day after that comes from the deterministic 5% sample, at roughly 8,000 to 93,000 scored posts per day depending on how long the laptop running Airflow stayed awake. Because daily counts reflect collection, not Bluesky's posting volume, the comparisons below use shares, not raw counts.
 
-**1. Score distribution.** _[What share of posts score near zero, and how the high end of the distribution looks. Is there a clear split, or a long tail?]_
+**1. Score distribution.** The average toxicity score across all posts is 0.10, while 9.2% of posts cross the 0.5 threshold. A low mean alongside a meaningful flagged share means the distribution is heavily skewed: most posts sit near zero, and a long tail of high scores carries the flags. In review-queue terms, the 0.5 cutoff would route about 1 in 11 English posts to a human, which is far more than any real moderation team could review at Bluesky's scale.
 
-**2. Flagged volume over time.** _[How stable the share of posts over 0.5 is from day to day, and any days that stand out.]_
+**2. Flagged volume over time.** The flagged share is remarkably stable, ranging only from 8.4% (October 30) to 9.7% (October 25) across eleven days, and the full-firehose day (9.2%) matches the sampled days. That stability is a good sign for the sampling method, since the 5% hash sample reproduces the full-stream rate. It also suggests the classifier is measuring a steady background level of rough language rather than reacting to specific events.
 
-**3. Categories.** _[Which Detoxify categories fire most and least, and what that suggests about what the model is really measuring.]_
+**3. Categories.** Categories fall off sharply after the general toxicity score: 2.4% of posts are flagged for insult, 0.3% for identity attack, and 0.13% for threat. Even if every insult flag also counted as toxic, at most about a quarter of toxicity flags would be insults, which fits the early observation that profanity, not targeted abuse, drives most of the general score. The categories that map most directly to policy (threats, identity-based attacks) are the rarest, so a team relying on the general toxicity score would be sorting through mostly profanity to find them.
 
-**4. Top-scoring posts.** _[Patterns in the highest-scoring posts: targeted abuse, casual profanity, quoted slurs, jokes. How many would a human reviewer actually act on?]_
+**4. Top-scoring posts.** Reading the highest-scoring posts (see the early observations below) shows the same pattern as the category counts: casual profanity scores as high as targeted abuse, and jokes, game talk, and genuine threats can land at similar scores. The model sees only the text of a single post, so it cannot tell a friend joking from a stranger harassing someone, which means a reviewer would dismiss many of the top-ranked posts on sight.
 
-**What this means for moderation operations.** _[Your takeaway: where this classifier would help a review queue, where it would add noise, and what other signals it would need.]_
+**What this means for moderation operations.** Detoxify is useful as a first-pass ranking signal: sorting a queue by its threat and identity-attack scores would surface a small, high-priority slice. Used as a single 0.5 gate on the general toxicity score, it would flood reviewers with profanity while staying blind to spam, scams, and polite coordinated harassment. In practice it would need per-category thresholds, conversation and account context, and separate detectors for non-hostile harms before it could carry real enforcement decisions.
+
+### Pipeline reliability
+
+The run report covers 100 hourly DAG runs from October 25 to November 1. 45 succeeded end to end. Every failure was operational, not a data-quality problem: 33 runs failed at `extract_jetstream` and 22 at `score_posts`, mostly when the laptop slept mid-run and a task hit its timeout or lost its websocket. `dbt_test` never failed on a run that reached it, so every row that reached the dashboard passed all data tests. Because the extract resumes from a saved cursor and inserts are idempotent, failed runs caught up on the next success without duplicates. Moving Airflow and Postgres to an always-on host would be the single biggest reliability fix.
 
 ### Early observations
 
-From an initial look at scored posts:
+From a manual read of high-scoring posts:
 
 - **Profanity inflates scores.** Casual swearing with no target scores as highly toxic, even when nothing abusive is happening.
 - **Context is lost.** Phrases that could be jokes, game talk, or genuine threats receive similar scores, since the model sees only the text of a single post.
